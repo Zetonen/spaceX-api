@@ -6,6 +6,5 @@ rocketsRouter.get("/", async (req, res) => {
   if (!data || data?.length === 0) {
     throw HttpError(404, "Rockets not found");
   }
-  console.log(data);
   res.json([...data]);
 });
