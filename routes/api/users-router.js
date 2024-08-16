@@ -1,8 +1,12 @@
 import express from "express";
 import { authenticate, isEmptyBody } from "../../middlewares/index.js";
-import { userSigninSchema, userSignupSchema } from "../../models/User.js";
+import {
+  userFavoriteRocketsSchema,
+  userSigninSchema,
+  userSignupSchema,
+} from "../../models/User.js";
 import usersController from "../../controllers/auth-controller.js";
-import {validateBody} from "../../decorators/index.js";
+import { validateBody } from "../../decorators/index.js";
 const usersRouter = express.Router();
 
 usersRouter.post(
@@ -20,6 +24,13 @@ usersRouter.post(
 );
 
 usersRouter.post("/logout", authenticate, usersController.logout);
+
+usersRouter.post(
+  "/favorite",
+  authenticate,
+  validateBody(userFavoriteRocketsSchema),
+  usersController.favorite
+);
 
 usersRouter.get("/current", authenticate, usersController.getCurrent);
 
