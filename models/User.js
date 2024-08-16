@@ -49,10 +49,6 @@ export const userSigninSchema = Joi.object({
   password: Joi.string().min(6).required(),
 });
 
-export const userFavoriteRocketsSchema = Joi.object({
-  rocketId: Joi.string().required(),
-});
-
 const User = model("user", userSchema);
 
 export default User;

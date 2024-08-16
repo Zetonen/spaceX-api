@@ -1,7 +1,6 @@
 import express from "express";
 import { authenticate, isEmptyBody } from "../../middlewares/index.js";
 import {
-  userFavoriteRocketsSchema,
   userSigninSchema,
   userSignupSchema,
 } from "../../models/User.js";
@@ -26,15 +25,13 @@ usersRouter.post(
 usersRouter.post("/logout", authenticate, usersController.logout);
 
 usersRouter.post(
-  "/favorite",
+  "/favorite/:rocketId",
   authenticate,
-  validateBody(userFavoriteRocketsSchema),
   usersController.addFavorite
 );
 usersRouter.delete(
-  "/favorite",
+  "/favorite/:rocketId",
   authenticate,
-  validateBody(userFavoriteRocketsSchema),
   usersController.deleteFavorite
 );
 usersRouter.get("/current", authenticate, usersController.getCurrent);

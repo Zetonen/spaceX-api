@@ -3,8 +3,8 @@ import { HttpError } from "../../helpers/index.js";
 
 const addFavorite = async (req, res) => {
   const { favoriteRockets } = req.user;
-  const { rocketId } = req.body;
-  console.log(rocketId);
+  const { rocketId } = req.params;
+
   if (favoriteRockets.includes(rocketId)) {
     throw HttpError(409, "Rocket already exist");
   }
