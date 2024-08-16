@@ -29,9 +29,14 @@ usersRouter.post(
   "/favorite",
   authenticate,
   validateBody(userFavoriteRocketsSchema),
-  usersController.favorite
+  usersController.addFavorite
 );
-
+usersRouter.delete(
+  "/favorite",
+  authenticate,
+  validateBody(userFavoriteRocketsSchema),
+  usersController.deleteFavorite
+);
 usersRouter.get("/current", authenticate, usersController.getCurrent);
 
 export default usersRouter;

@@ -1,7 +1,7 @@
 import User from "../../models/User.js";
 import { HttpError } from "../../helpers/index.js";
 
-const favorite = async (req, res) => {
+const addFavorite = async (req, res) => {
   const { favoriteRockets } = req.user;
   const { rocketId } = req.body;
   console.log(rocketId);
@@ -12,4 +12,4 @@ const favorite = async (req, res) => {
   await User.findByIdAndUpdate(req.user._id, { favoriteRockets });
   res.status(201).json({ message: "Rocket added", rocketId });
 };
-export default favorite;
+export default addFavorite;
