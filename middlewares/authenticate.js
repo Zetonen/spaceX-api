@@ -6,7 +6,6 @@ import User from "../models/User.js";
 const { JWT_SECRET } = process.env;
 
 const authenticate = async (req, res, next) => {
-  console.log(req.body);
   const { authorization } = req.headers;
   if (!authorization) {
     throw HttpError(401, "Authorization header not found");
