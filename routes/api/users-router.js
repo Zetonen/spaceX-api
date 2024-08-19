@@ -1,6 +1,7 @@
 import express from "express";
 import { authenticate, isEmptyBody } from "../../middlewares/index.js";
 import {
+  userEmailSchema,
   userSigninSchema,
   userSignupSchema,
 } from "../../models/User.js";
@@ -23,6 +24,14 @@ usersRouter.post(
 );
 
 usersRouter.post("/logout", authenticate, usersController.logout);
+
+usersRouter.get("/verify/:verificationToken", usersController.verify);
+usersRouter.post(
+  "/verify/",
+  isEmptyBody,
+  validateBody(userEmailSchema),
+  usersController.resendVerify
+);
 
 usersRouter.post(
   "/favorite/:rocketId",

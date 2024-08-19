@@ -19,7 +19,9 @@
     "express": "^4.19.2",
     "joi": "^17.13.3",
     "jsonwebtoken": "^9.0.2",
-    "mongoose": "^8.5.3"
+    "mongoose": "^8.5.3",
+    "nanoid": "^5.0.7",
+    "nodemailer": "^6.9.14"
   },
   "devDependencies": {
     "jest": "^29.7.0",

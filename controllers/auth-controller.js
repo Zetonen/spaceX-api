@@ -6,6 +6,8 @@ import {
   addFavorite,
   deleteFavorite,
   getCurrent,
+  verify,
+  resendVerify,
 } from "./auth/index.js";
 export default {
   signup: ctrlWrapper(signup),
@@ -14,4 +16,6 @@ export default {
   addFavorite: ctrlWrapper(addFavorite),
   deleteFavorite: ctrlWrapper(deleteFavorite),
   getCurrent: ctrlWrapper(getCurrent),
+  verify: ctrlWrapper(verify),
+  resendVerify: ctrlWrapper(resendVerify),
 };

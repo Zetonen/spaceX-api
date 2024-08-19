@@ -1,6 +1,6 @@
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
-import HttpError from "../../helpers/HttpError.js";
+import { HttpError } from "../../helpers/index.js";
 import User from "../../models/User.js";
 
 const { JWT_SECRET } = process.env;
@@ -11,6 +11,11 @@ const signin = async (req, res) => {
   if (!user) {
     throw HttpError(401, "Email or password invalid");
   }
+
+  if (!user.verify) {
+    throw HttpError(401, "Email not verified");
+  }
+
   const passwordCompare = await bcrypt.compare(password, user.password);
   if (!passwordCompare) {
     throw HttpError(401, "Email or password invalid");
